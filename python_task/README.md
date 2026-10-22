@@ -4,6 +4,18 @@ A Python-based command-line interface (CLI) data pipeline that processes dormito
 
 ---
 
+## Database Configuration
+
+When running locally via Docker, use the following default connection settings:
+
+- **Host**: `localhost` (or `127.0.0.1`)
+- **Port**: `5332` (mapped from container port `5432`)
+- **Database Name**: `dormitory_db`
+- **Username**: `postgres`
+- **Password**: `postgres`
+
+---
+
 ## What Was Done (Project Highlights)
 
 1. **ETL Pipeline Implementation**: Built an end-to-end Extract, Transform, Load (ETL) workflow that reads input datasets (`rooms.json`, `students.json`), creates necessary relational schema constraints, and batch-inserts records into PostgreSQL.
