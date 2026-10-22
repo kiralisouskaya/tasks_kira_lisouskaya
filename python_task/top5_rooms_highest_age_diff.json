@@ -1,0 +1,27 @@
+[
+    {
+        "room_id": 712,
+        "room_name": "Room #712",
+        "age_difference": "115"
+    },
+    {
+        "room_id": 486,
+        "room_name": "Room #486",
+        "age_difference": "115"
+    },
+    {
+        "room_id": 918,
+        "room_name": "Room #918",
+        "age_difference": "115"
+    },
+    {
+        "room_id": 381,
+        "room_name": "Room #381",
+        "age_difference": "115"
+    },
+    {
+        "room_id": 875,
+        "room_name": "Room #875",
+        "age_difference": "115"
+    }
+]
