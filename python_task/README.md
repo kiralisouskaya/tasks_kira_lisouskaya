@@ -14,6 +14,18 @@ A Python-based command-line interface (CLI) data pipeline that processes dormito
 
 ---
 
+## Database Configuration
+
+When running locally via Docker, use the following default connection settings:
+
+- **Host**: `localhost` (or `127.0.0.1`)
+- **Port**: `5332` (mapped from container port `5432`)
+- **Database Name**: `dormitory_db`
+- **Username**: `postgres`
+- **Password**: `postgres`
+
+---
+
 ## Project Structure
 
 ```text
