@@ -15,10 +15,13 @@ QUERY_TOP5_ROOMS_LOWEST_AVG_AGE = """
     SELECT 
         r.id AS room_id,
         r.name AS room_name,
-        AVG(CURRENT_DATE - s.birthday) AS avg_age
+        -- RU: Переводим возраст в годы (делим на 365.25 для учета високосных) и округляем до 1 знака[cite: 2].
+        -- EN: Convert age to years (divide by 365.25 for leap years) and round to 1 decimal place[cite: 2].
+        ROUND(AVG((CURRENT_DATE - s.birthday) / 365.25), 1) AS avg_age
     FROM rooms r
     JOIN students s ON r.id = s.room
     GROUP BY r.id, r.name
+    -- RU: Сортировка по возрастанию и лимит 5. / EN: Sort ascending and limit to 5.
     ORDER BY avg_age ASC
     LIMIT 5;
 """

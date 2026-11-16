@@ -1,4 +1,6 @@
 import argparse
+import os
+from dotenv import load_dotenv
 from pathlib import Path
 from dormitory.db import DatabaseManager
 from dormitory.parsers import JSONFileParser
@@ -9,6 +11,10 @@ from dormitory.queries import (
     QUERY_TOP5_ROOMS_HIGHEST_AGE_DIFF,
     QUERY_ROOMS_WITH_MIXED_SEXES
 )
+
+
+# Load environment variables
+load_dotenv()
 
 
 # Base directory resolution for absolute paths to SQL scripts
@@ -40,38 +46,21 @@ def setup_argparser() -> argparse.ArgumentParser:
         help="Export format choice: json or xml (default: json)",
     )
 
-    # Add optional database server hostname flag
+    # Default values are now fetched from .env, with fallbacks provided
     parser.add_argument(
-        "--db-host",
-        type=str,
-        default="localhost",
-        help="Database server host address",
+        "--db-host", type=str, default=os.getenv("DB_HOST", "localhost"), help="Database server host address"
     )
-
-    # Add optional database server port flag
     parser.add_argument(
-        "--db-port", type=int, default=5332, help="Database server port number"
+        "--db-port", type=int, default=int(os.getenv("DB_PORT", 5332)), help="Database server port number"
     )
-
-    # Add optional target database name flag
     parser.add_argument(
-        "--db-name",
-        type=str,
-        default="dormitory_db",
-        help="Target database name",
+        "--db-name", type=str, default=os.getenv("DB_NAME", "dormitory_db"), help="Target database name"
     )
-
-    # Add optional database username flag
     parser.add_argument(
-        "--db-user", type=str, default="postgres", help="Database username"
+        "--db-user", type=str, default=os.getenv("DB_USER", "postgres"), help="Database username"
     )
-
-    # Add optional database user password flag
     parser.add_argument(
-        "--db-password",
-        type=str,
-        default="postgres",
-        help="Database user password",
+        "--db-password", type=str, default=os.getenv("DB_PASSWORD", "postgres"), help="Database user password"
     )
 
     # Return the configured argument parser instance
